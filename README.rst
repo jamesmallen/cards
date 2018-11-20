@@ -1,15 +1,11 @@
 cards
 =====
 
-.. image:: https://img.shields.io/pypi/v/cards.svg
-    :target: https://pypi.python.org/pypi/cards
-    :alt: Latest PyPI version
-
-.. image:: https://travis-ci.org/borntyping/cookiecutter-pypackage-minimal.png
-   :target: https://travis-ci.org/borntyping/cookiecutter-pypackage-minimal
-   :alt: Latest Travis CI build status
-
 A module to manage decks of cards
+
+.. image:: https://img.shields.io/travis/jamesmallen/cards.svg
+        :target: https://travis-ci.org/jamesmallen/cards
+
 
 Usage
 -----
