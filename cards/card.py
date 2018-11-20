@@ -17,6 +17,8 @@ NUMBER_TRANS = {
     'k': 'king',
     'q': 'queen',
 }
+NUMBER_TRANS_REV = {value: key for key, value in NUMBER_TRANS.items()}
+
 
 SUITS = {
     'c': 'clubs',
@@ -24,6 +26,7 @@ SUITS = {
     'h': 'hearts',
     's': 'spades',
 }
+SUITS_REV = {value: key for key, value in SUITS.items()}
 
 
 class Card:
@@ -37,11 +40,17 @@ class Card:
     def __init__(self, number: Union[int, str], suit: str) -> None:
         number = str(number)
         if number.lower() not in VALID_NUMBERS:
-            raise ValueError(f'Invalid number: {number}')
+            if number.lower() in NUMBER_TRANS_REV:
+                number = NUMBER_TRANS_REV[number.lower()]
+            else:
+                raise ValueError(f'Invalid number: {number}')
         self.number = number.lower()
 
-        if suit.lower() not in SUITS.keys() and suit.lower() not in SUITS.values():
-            raise ValueError(f'Invalid suit: {suit}')
+        if suit.lower() not in SUITS.keys():
+            if suit.lower() in SUITS_REV:
+                suit = SUITS_REV[suit.lower()]
+            else:
+                raise ValueError(f'Invalid suit: {suit}')
         self.suit = suit.lower()
 
     def __str__(self) -> str:

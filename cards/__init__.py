@@ -8,5 +8,5 @@ from cards.deck import Deck
 
 __all__ = [
     'Card',
-    'Deck'
+    'Deck',
 ]

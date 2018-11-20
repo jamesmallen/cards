@@ -2,9 +2,11 @@
 Deck
 """
 import itertools
+import random
 from typing import Iterable
 
 from cards import Card
+from cards.exceptions import DeckEmpty
 
 
 class Deck:
@@ -29,7 +31,27 @@ class Deck:
         """
         Builds the card objects that are in the Deck.
 
-        Subclasses may override this method to have different decks (e.g., euchre decks)
+        Subclasses may override this method to have different decks
         """
         for suit, number in itertools.product(cls.suits, cls.numbers):
             yield Card(number, suit)
+
+    def __len__(self) -> int:
+        return len(self.cards)
+
+    def shuffle(self) -> None:
+        """
+        Shuffles the deck in place
+        """
+        random.shuffle(self.cards)
+
+    def deal_card(self) -> Card:
+        """
+        Deals one card from the top of the deck
+
+        Raises
+        """
+        try:
+            return self.cards.pop()
+        except IndexError:
+            raise DeckEmpty('No cards in deck')
